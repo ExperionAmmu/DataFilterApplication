@@ -1,0 +1,35 @@
+.head_style
+{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin-left: -5%;
+    margin-right: -6%;
+    color: #4775d1;
+}
+.form_style{
+    align-items: left;
+    margin-top: 10 px;
+    text-align: center;
+    border-radius: 1px solid;
+    box-sizing: border-box;
+    border: 3px solid #ccc;
+    width: 70%;
+    padding: 50px 25px;
+    margin: 8px 0;
+    box-shadow: 5px 5px 5px #888888;
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto !important;
+}
+.form-group{
+margin-bottom: 15px;
+margin-top: 3%;
+margin-right: 30%;
+
+}
+.button_style
+{
+    border-radius: 1px;
+    width: 49%;
+}

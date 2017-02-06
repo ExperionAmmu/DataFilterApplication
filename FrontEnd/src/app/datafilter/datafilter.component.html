@@ -1,0 +1,82 @@
+<div class="container-fluid">
+  <div class="row">
+    <!--Show first filterField-->
+    <div class="col-md-3">
+      <select #index (change)='SelectedValue = index.value; FetchEmployeeData(index.value)' class="form-control"> 
+    <option *ngFor="let n of employeeRecord.details" [value]="n.id" >{{n.name}}</option>
+    </select>
+    </div>
+
+    <div class="col-md-3">
+      <!--Show second filterField-->
+      <div *ngIf="SelectedValue==2">
+        <select #index (change)='SelectedValueno = index.value' class="form-control"> 
+                    <option *ngFor="let n of operatorList;let i=index" [value]="n[i].OperatorSymbol" > {{n.OperatorSymbol}} </option>
+                </select>
+      </div>
+      <div *ngIf="SelectedValue==3">
+        <select #index (change)='SelectedValuename = index.value'> 
+                      <option *ngFor="let n of filterEmployeeName.operators" [value]="n.id">{{n.name}}</option>
+                </select>
+      </div>
+      <div *ngIf="SelectedValue==4">
+        <select #index (change)='SelectedValuedoj = index.value'> 
+                      <option *ngFor="let n of filterEmployeeDOJ.operators" [value]="n.id">{{n.name}}</option>
+                </select>
+      </div>
+      <div *ngIf="SelectedValue==5">
+        <select #index (change)='SelectedValueop = index.value' required> 
+                      <option *ngFor="let n of filterOperator.operators" [value]="n.id">{{n.name}}</option>
+                </select>
+      </div>
+      <div *ngIf="SelectedValue==6">
+        <select #index (change)='SelectedValueband = index.value'required> 
+                      <option *ngFor="let n of filterOperator.operators" [value]="n.id">{{n.name}}</option><br />
+                </select>
+      </div>
+
+      <div *ngIf="SelectedValuedoj==7">
+        <div class="row"><br />
+          <label class="col-sm-4 control-label">DateFrom</label>
+          <div class="col-md-3"><input type="date" #myDate [value]="demoUser.date | date:'yyyy-MM-dd'" (change)="demoUser.date=parseDate($event.target.value)" name="start_date" /></div><br /><br />
+          <label class="col-sm-4 control-label">DateTo</label>
+          <div class="col-md-3"><input type="date" #myDate [value]="demoUser.date | date:'yyyy-MM-dd'" (change)="demoUser.date=parseDate($event.target.value)" name="end_date" /></div>
+        </div>
+      </div>
+
+    </div>
+
+    <label class="col-sm-1 control-label">Value</label>
+    <div class="col-md-3">
+      <input type="text" name="value" class="form-control" id="value" placeholder="Enter search value"><br />
+    </div>
+    <a [routerLink]="['/login']"><button class="btn btn-danger"> SignOut </button></a>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <button type="submit" name="filter-submit" id="filter" class="btn btn-primary button_style" value="Submit">Filter</button>
+      <button type="button" class="btn btn-warning button_style" (click) = "Reset()">Reset</button><br />
+    </div>
+  </div>
+  <hr>
+  <div class="row">
+    <table class="table table-striped" *ngIf = "showdefaultValue">
+      <thead>
+        <th>EmployeeNumber</th>
+        <th>EmployeeName</th>
+        <th>Date of Joining</th>
+        <th>Designation</th>
+        <th>Band</th>
+      </thead>
+      <tbody> 
+        <tr *ngFor = "let e of employees">
+          <td>{{e.EmployeeNo}}</td>
+          <td>{{e.EmployeeName}}</td>
+          <td>{{e.DateOfJoining}}</td>
+          <td>{{e.Designation}}</td>
+          <td>{{e.Band}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
